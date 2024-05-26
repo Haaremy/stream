@@ -6,6 +6,9 @@ import IndexScreen from "../index/indexscreen";
 import ErrorScreen from "../error/errorscreen";
 import Footer from "../footer/footer";
 import Navigation from "../navigation/navigation";
+import Movies from '../movies/movies';
+import Series from '../series/series';
+import Music from '../music/music';
 
 class App extends Component {
   constructor(props) {
@@ -73,7 +76,7 @@ class App extends Component {
     );
 
     let footbar = (
-      <Footer changeScreen={this.changeScreen} lang={this.state.lang} />
+      <Footer changeScreen={this.changeScreen} />
     );
 
     let screenComponent; // Displays IndexSceen
@@ -84,6 +87,24 @@ class App extends Component {
           <IndexScreen
             changeScreen={this.changeScreen}
           />
+        );
+        break;
+
+        case "movies":
+        screenComponent = (
+          <Movies changeScreen={this.changeScreen} />
+        );
+        break;
+
+        case "series":
+        screenComponent = (
+          <Series changeScreen={this.changeScreen} />
+        );
+        break;
+
+        case "music":
+        screenComponent = (
+          <Music changeScreen={this.changeScreen} />
         );
         break;
 

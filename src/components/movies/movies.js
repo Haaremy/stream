@@ -2,8 +2,6 @@ import { withTranslation } from "react-i18next";
 import React, { Component } from "react";
 import Icon from '@mdi/react';
 import { mdiSortBoolAscendingVariant } from '@mdi/js';
-import { mdiArrowRight } from '@mdi/js';
-
 
 let toggleType = [ true, true, true];
 
@@ -65,7 +63,7 @@ const sortTable = (n) => {
   }
 }
 
-class IndexScreen extends Component {
+class Movies extends Component {
 
   constructor(){
     super();
@@ -89,41 +87,56 @@ class IndexScreen extends Component {
     }
   }
 
+
+
+
   
   render() {
     const {t} = this.props;
     let toggleWork = this.state.toggleState0 ? "istoggled" : "nottoggled";
     let toggleEdu = this.state.toggleState1 ? "istoggled" : "nottoggled";
     let togglePursuit = this.state.toggleState2 ? "istoggled" : "nottoggled";
-
+  
     return (
       <>
+      <div class="line"/>
+            <br/>
+        <aside className="quickNavigation">
+        <ul id="navi" className="navul">
+          <li
+            className="navli"
+            onClick={() => this.props.changeScreen("series")}
+            >
+            <a href="#series">{t("series")}</a>
+          </li>
+          <li
+            className="navli"
+            onClick={() => this.props.changeScreen("music")}
+            >
+            <a href="#music">{t("music")}</a>
+          </li>
+        </ul>
+        </aside>
         
 
-        <div class="line"/>
-            <br/>
+
+        
 
       <div className="indexContent">
         
         <div className="movies" id="movies">
-          <h1><a href = "#movies" onClick={() => this.props.changeScreen("movies")}>{t("movies")} <Icon path={mdiArrowRight}/></a></h1>
-        </div>
+          <h1>{t("movies")}</h1>
 
-
-        <div class="line"/>
-            <br/>
-
-        <div id="series" className="series">
-        <h1><a href = "#series" onClick={() => this.props.changeScreen("series")}>{t("series")} <Icon path={mdiArrowRight}/></a></h1>
-          <br/>
           
-          <div class="lebenslauf">
+          <div class="movieTable">
             <table id="myTable">
               <tr className="even">
-                <th id = "th1" onClick={() => sortTable(0)}><div className="categoryHead">
+              <th id = "th1" onClick={() => sortTable(1)}>{t("title")}</th>
+              <th id = "th2" onClick={() => sortTable(1)}>{t("length")}</th>
+              <th id = "th3" onClick={() => sortTable(0)}><div className="categoryHead">
                   <li>
                     <div className="dropdown">
-                      <Icon className="dropbtn" path={mdiSortBoolAscendingVariant}  />
+                      
                       <div
                         id="myDropdown"
                         className="dropdown-content"                      >
@@ -164,33 +177,24 @@ class IndexScreen extends Component {
                     </div>   
                   </li>
                 </div>
-                <div className="categoryName"> {t("type")}</div>
+                <div className="categoryName"> {t("type")} <Icon className="dropbtn" path={mdiSortBoolAscendingVariant}  /></div>
               </th>
-              <th id = "th2" onClick={() => sortTable(1)}>{t("time")}</th>
-              <th id = "th3" >{t("description")}</th>
             </tr>
+
             <tr className="odd">
               <td className="type"></td>
               <td className="date">{t("today")}</td>
               <td className="description"></td>
-            </tr>
-            <tr className={toggleWork}>
-              <td className="type">{t("work")}</td>
-              <td className="date">2023 {t("apr")}</td>
-              <td className="description">{t("dewo23/04")}<br/><br/></td>
-            </tr>      
+            </tr>    
             </table>
           </div>
-          <div class="line"/>
-            <br/>
+
         </div>
-        <div id="music" className="music">
-        <h1><a href = "#music" onClick={() => this.props.changeScreen("music")}>{t("music")} <Icon path={mdiArrowRight}/></a></h1>
-        </div>
+
       </div>
       </>
     );
   }
 }
 
-export default withTranslation()(IndexScreen);
+export default withTranslation()(Movies);
