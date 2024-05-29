@@ -112,7 +112,7 @@ class Movies extends Component {
           <h1>{t("movies")}</h1>
 
           
-          {movTitList.map((tit, index) => (<h3>{index} -{tit} </h3> ))}
+          {/*movTitList.map((tit, index) => (<h3>{index} -{tit} </h3> ))*/}
         </div>
 
       </div>
