@@ -1,11 +1,11 @@
 import "../style.css";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Component } from "react";
 import { withTranslation } from "react-i18next";
-import IndexScreen from "../index/indexscreen";
+import Index from "../index/index";
 import ErrorScreen from "../error/errorscreen";
 import Footer from "../footer/footer";
-import Navigation from "../navigation/navigation";
+import Header from "../header/header";
 import Movies from '../movies/movies';
 import Series from '../series/series';
 import Music from '../music/music';
@@ -64,59 +64,31 @@ class App extends Component {
   render() {
     
     let navigationBar = ( //declaring needed states for components
-      <Navigation
-        changeScreen={this.changeScreen}
+      <Header
         currentTheme={this.state.currentTheme}
         changeTheme={this.changeTheme}
         changeLanguage={this.changeLanguage}
         lang={this.state.lang}
-        login={this.changeLog}
-        log={this.state.login}
       />
     );
 
-    let footbar = (
-      <Footer changeScreen={this.changeScreen} />
-    );
-
-    let screenComponent; // Displays IndexSceen
-
-    switch (this.state.currentScreen) {
-      case "index":
-        screenComponent = (
-          <IndexScreen
-            changeScreen={this.changeScreen}
-          />
-        );
-        break;
-
-        case "movies":
-        screenComponent = (
-          <Movies changeScreen={this.changeScreen} />
-        );
-        break;
-
-        case "series":
-        screenComponent = (
-          <Series changeScreen={this.changeScreen} />
-        );
-        break;
-
-        case "music":
-        screenComponent = (
-          <Music changeScreen={this.changeScreen} />
-        );
-        break;
-
-      default:
-        screenComponent = <ErrorScreen />;
-    }
     return (
       <>
-        {navigationBar}
-        <main>{screenComponent}</main>
-        {footbar}
-      </>
+      <main>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={navigationBar}>
+            <Route path="" element={<Index />} />
+            <Route path="movies" element={<Movies />} />
+            <Route path="series" element={<Series />} />
+            <Route path="music" element={<Music />} />
+            <Route path="*" element={<ErrorScreen />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      </main>
+      {<Footer/>} 
+        </>
     );
   }
 }

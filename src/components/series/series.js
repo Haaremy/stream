@@ -98,22 +98,6 @@ class Series extends Component {
       <>
       <div class="line"/>
             <br/>
-        <aside className="quickNavigation">
-        <ul id="navi" className="navul">
-          <li
-            className="navli"
-            onClick={() => this.props.changeScreen("movies")}
-            >
-            <a href="#movies">{t("movies")}</a>
-          </li>
-          <li
-            className="navli"
-            onClick={() => this.props.changeScreen("music")}
-            >
-            <a href="#music">{t("music")}</a>
-          </li>
-        </ul>
-        </aside>
         
 
 

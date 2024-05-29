@@ -98,22 +98,6 @@ class Music extends Component {
       <>
       <div class="line"/>
             <br/>
-        <aside className="quickNavigation">
-        <ul id="navi" className="navul">
-          <li
-            className="navli"
-            onClick={() => this.props.changeScreen("movies")}
-            >
-            <a href="#movies">{t("movies")}</a>
-          </li>
-          <li
-            className="navli"
-            onClick={() => this.props.changeScreen("series")}
-            >
-            <a href="#series">{t("series")}</a>
-          </li>
-        </ul>
-        </aside>
         
 
 
