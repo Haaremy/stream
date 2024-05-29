@@ -14,8 +14,8 @@ class Index extends Component {
   render() {
 
     const { t, i18n } = this.props;
-//const images = require.context('../../media', true);
-//const imageList = images.keys().map(image => images(image));
+const images = require.context('../../media', true);
+const imageList = images.keys().map(image => images(image));
 
 
 
@@ -30,7 +30,7 @@ class Index extends Component {
         
         <div className="movies" id="movies">
           <h1><a href = "movies" onClick={() => this.props.changeScreen("movies")}>{t("movies")} <Icon path={mdiArrowRight}/></a></h1>
-          
+          {imageList.map((image, index) => (<h3>{index} -{image} </h3> ))}
         </div>
 
 
