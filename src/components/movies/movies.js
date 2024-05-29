@@ -93,7 +93,7 @@ class Movies extends Component {
   
   render() {
     const {t} = this.props;
-    const movTit = require.context('../Movies', true);
+    const movTit = require.context('../media', true);
     const movTitList = movTit.keys().map(tit => movTit(tit));
   
     return (
