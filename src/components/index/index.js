@@ -14,10 +14,10 @@ class Index extends Component {
   render() {
 
     const { t, i18n } = this.props;
-const images = require.context('../../media', true);
-const imageList = images.keys().map(image => images(image));
+//const images = require.context('../../media', true);
+//const imageList = images.keys().map(image => images(image));
 
-const movTit = require.context('../../media/Movies', true);
+const movTit = require.context('../Movies', true);
 const movTitList = movTit.keys().map(tit => movTit(tit));
 
     return (
@@ -31,7 +31,6 @@ const movTitList = movTit.keys().map(tit => movTit(tit));
         
         <div className="movies" id="movies">
           <h1><a href = "movies" onClick={() => this.props.changeScreen("movies")}>{t("movies")} <Icon path={mdiArrowRight}/></a></h1>
-          {imageList.map((image, index) => (<img key={index} src={image} alt={`image-${index} `} /> ))}
           {movTitList.map((tit, index) => (<h3>{index} -{tit} </h3> ))}
         </div>
 
