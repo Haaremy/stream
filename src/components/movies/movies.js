@@ -93,9 +93,8 @@ class Movies extends Component {
   
   render() {
     const {t} = this.props;
-    let toggleWork = this.state.toggleState0 ? "istoggled" : "nottoggled";
-    let toggleEdu = this.state.toggleState1 ? "istoggled" : "nottoggled";
-    let togglePursuit = this.state.toggleState2 ? "istoggled" : "nottoggled";
+    const movTit = require.context('../Movies', true);
+    const movTitList = movTit.keys().map(tit => movTit(tit));
   
     return (
       <>
@@ -113,67 +112,7 @@ class Movies extends Component {
           <h1>{t("movies")}</h1>
 
           
-          <div class="movieTable">
-            <table id="myTable">
-              <tr className="even">
-              <th id = "th1" onClick={() => sortTable(1)}>{t("title")}</th>
-              <th id = "th2" onClick={() => sortTable(1)}>{t("length")}</th>
-              <th id = "th3" onClick={() => sortTable(0)}><div className="categoryHead">
-                  <li>
-                    <div className="dropdown">
-                      
-                      <div
-                        id="myDropdown"
-                        className="dropdown-content"                      >
-                        <a 
-                          className="dropItem"
-                          onClick={() => this.changeToggle(0)}
-                        >
-                          <input 
-                            type="checkbox"
-                            checked={toggleType[0]}
-                            
-                          />
-                          {t("work")}
-                        </a>
-                        <a 
-                          className="dropItem"
-                         onClick={() => this.changeToggle(1)}
-                        >
-                          <input 
-                            type="checkbox"
-                            checked={toggleType[1]}
-                            
-                            />
-                          {t("edu")}
-                        </a>
-                        <a 
-                          className="dropItem"
-                          onClick={() => this.changeToggle(2)}
-                        >
-                          <input 
-                            type="checkbox"
-                            checked={toggleType[2]}
-                            
-                          />
-                          {t("pursuits")}
-                        </a>
-                      </div>
-                    </div>   
-                  </li>
-                </div>
-                <div className="categoryName"> {t("type")} <Icon className="dropbtn" path={mdiSortBoolAscendingVariant}  /></div>
-              </th>
-            </tr>
-
-            <tr className="odd">
-              <td className="type"></td>
-              <td className="date">{t("today")}</td>
-              <td className="description"></td>
-            </tr>    
-            </table>
-          </div>
-
+          {movTitList.map((tit, index) => (<h3>{index} -{tit} </h3> ))}
         </div>
 
       </div>

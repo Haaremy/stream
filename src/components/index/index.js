@@ -17,8 +17,7 @@ class Index extends Component {
 //const images = require.context('../../media', true);
 //const imageList = images.keys().map(image => images(image));
 
-const movTit = require.context('../Movies', true);
-const movTitList = movTit.keys().map(tit => movTit(tit));
+
 
     return (
       <>
@@ -31,7 +30,7 @@ const movTitList = movTit.keys().map(tit => movTit(tit));
         
         <div className="movies" id="movies">
           <h1><a href = "movies" onClick={() => this.props.changeScreen("movies")}>{t("movies")} <Icon path={mdiArrowRight}/></a></h1>
-          {movTitList.map((tit, index) => (<h3>{index} -{tit} </h3> ))}
+          
         </div>
 
 
