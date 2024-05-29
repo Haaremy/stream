@@ -93,7 +93,7 @@ class Movies extends Component {
   
   render() {
     const {t} = this.props;
-    const movTit = require.context('../media', true);
+    const movTit = require.context('./Movies', true);
     const movTitList = movTit.keys().map(tit => movTit(tit));
   
     return (
@@ -112,7 +112,7 @@ class Movies extends Component {
           <h1>{t("movies")}</h1>
 
           
-          {/*movTitList.map((tit, index) => (<h3>{index} -{tit} </h3> ))*/}
+          {movTitList.map((tit, index) => (<h3>{index} -{tit} </h3> ))}
         </div>
 
       </div>
