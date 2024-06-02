@@ -18,6 +18,7 @@ const images = require.context('../../media', true);
 const imageList = images.keys().map(image => images(image));
 
 
+  
 
     return (
       <>
@@ -39,6 +40,8 @@ const imageList = images.keys().map(image => images(image));
 
         <div id="series" className="series">
         <h1><a href = "series" onClick={() => this.props.changeScreen("series")}>{t("series")} <Icon path={mdiArrowRight}/></a></h1>
+       
+        
           <br/>
           
           
@@ -46,7 +49,19 @@ const imageList = images.keys().map(image => images(image));
             <br/>
         </div>
         <div id="music" className="music">
-        <h1><a href = "music" onClick={() => this.props.changeScreen("music")}>{t("music")} <Icon path={mdiArrowRight}/></a></h1>
+        <h1><a href = "#" onClick={() =>
+
+          fetch("http://9.109.114.193:31231/httpreceiver/path1/ExampleFileName.txt", {
+          method: "GET",
+          })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((error) => console.log(error))
+  
+
+        }>{t("music")} <Icon path={mdiArrowRight}/></a></h1>
         </div>
 
       </div>
